@@ -9,10 +9,9 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        val config = RetrofitConfig.initConfig(this) {
-            baseUrl = "https://apitest.test.com/"
-            isLogInterceptor = BuildConfig.DEBUG
-            interceptors = arrayListOf(ParamsInterceptors())
+        val config = RetrofitConfig.initConfig(applicationContext) {
+            this.isLogInterceptor = BuildConfig.DEBUG
+            this.interceptors = arrayListOf(ParamsInterceptors())
         }
         RetrofitHelper.getInstance().initRetrofit(config)
     }

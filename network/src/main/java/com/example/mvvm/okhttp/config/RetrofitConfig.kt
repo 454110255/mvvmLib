@@ -1,13 +1,12 @@
 package com.example.mvvm.okhttp.config
 
 import android.app.Application
+import android.content.Context
 import com.example.mvvm.okhttp.cookie.CookieJarMannager
 import okhttp3.Interceptor
 import java.io.File
 
-class RetrofitConfig (val context: Application) {
-    //基础域名
-    var baseUrl: String? = null
+class RetrofitConfig(val context: Context) {
     //是否输出日志
     var isLogInterceptor: Boolean = false
     //是否debug模式
@@ -29,15 +28,18 @@ class RetrofitConfig (val context: Application) {
     var interceptors: List<Interceptor>? = null
 
     init {
-        application = context
+        application = context.applicationContext
     }
 
     companion object {
-        lateinit var  application:Application
+        const val BASE_URL = "https://sxypproducttest.sxfqsc.com/"
+        @JvmStatic
+        lateinit var application: Context
+
         @JvmStatic
         @JvmOverloads
         inline fun initConfig(
-            context: Application,
+            context: Context,
             block: RetrofitConfig.() -> Unit = {}
         ): RetrofitConfig = RetrofitConfig(context).apply(block)
     }

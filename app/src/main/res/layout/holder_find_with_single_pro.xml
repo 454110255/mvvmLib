@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.mvvmlib.model.Data" />
+
+        <variable
+            name="bean"
+            type="Data" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_find_holder"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingBottom="12dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="8dp"
+                app:imageUrl="@{bean.avatar}"
+                tools:src="@mipmap/sz_head" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_toLeftOf="@+id/iv_share"
+                android:layout_toRightOf="@id/iv_avatar"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="#444444"
+                android:textSize="15sp"
+                tools:text="水象当天发" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_avatar"
+                android:layout_marginBottom="2dp"
+                android:layout_toLeftOf="@+id/iv_share"
+                android:layout_toRightOf="@id/iv_avatar"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/c_999999"
+                android:textSize="@dimen/sp_12"
+                tools:text="14:30" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            tools:text="500元的预算也能出国玩到嗨" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="10dp"
+            android:lineSpacingExtra="2dp"
+            android:textColor="#444444"
+            android:textSize="14sp"
+            tools:text="从 2015 年 4 月起，Ant Design 在蚂蚁金服中后台产品线迅速推广，对接多条业务线，覆盖系统 800 个以" />
+
+        <com.example.mvvmlib.view.NineGridView
+            android:id="@+id/grid_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="10dp"
+            app:ngv_gridSpacing="@dimen/qb_px_5"
+            app:ngv_img_clickable="false"
+            app:ngv_maxSize="4"
+            app:ngv_mode="grid"
+            app:ngv_singleImageRatio="1" />
+
+        <include
+            layout="@layout/holder_find_product_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp" />
+    </LinearLayout>
+</layout>

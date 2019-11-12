@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--图片九宫格-->
+    <declare-styleable name="NineGridView">
+        <!--只显示一张图片时的最大图片大小-->
+        <attr name="ngv_singleImageSize" format="dimension"/>
+        <!--只显示一张图片时图片宽高比-->
+        <attr name="ngv_singleImageRatio" format="float"/>
+        <!--网格显示图片时，图片之间的间距，默认3dp-->
+        <attr name="ngv_gridSpacing" format="dimension"/>
+        <!--最多显示图片的数量，默认最大9张-->
+        <attr name="ngv_maxSize" format="integer"/>
+        <attr name="ngv_img_clickable" format="boolean"/>
+        <!--支持fill和grid两种显示模式，其中grid模式在显示4张图片时采用2*2的布局-->
+        <attr name="ngv_mode" format="enum">
+            <enum name="fill" value="0"/>
+            <enum name="grid" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

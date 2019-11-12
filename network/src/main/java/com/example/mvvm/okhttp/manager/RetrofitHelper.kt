@@ -6,9 +6,11 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.util.concurrent.ConcurrentHashMap
 
 class RetrofitHelper private constructor() {
-    private lateinit var retrofit: Retrofit
+    private val serviceMap = ConcurrentHashMap<String, Retrofit>()
+    private lateinit var config: RetrofitConfig
 
     companion object {
         private var INSTANCE: RetrofitHelper? = null
@@ -24,10 +26,24 @@ class RetrofitHelper private constructor() {
         }
     }
 
+    fun initRetrofit(config: RetrofitConfig) {
+        this.config = config
+    }
+
+
     /***
      * 返回实例
      */
-    fun <T> createRequest(serviceCls: Class<T>): T {
+    @JvmOverloads
+    fun <T> createRequest(serviceCls: Class<T>, host: String): T {
+        var retrofit: Retrofit? = null
+        if (serviceMap.contains(host)) {
+            retrofit = serviceMap[host]
+        }
+        if (retrofit == null) {
+            retrofit = createRetrofit(host)
+            serviceMap[host] = retrofit
+        }
         return retrofit.create(serviceCls)
     }
 
@@ -35,13 +51,13 @@ class RetrofitHelper private constructor() {
      * 初始化retrofit对象
      */
     @JvmOverloads
-    fun initRetrofit(config: RetrofitConfig) {
-        retrofit = Retrofit.Builder()
+    fun createRetrofit(baseUrl: String): Retrofit {
+        return Retrofit.Builder()
             .client(OkHttpClientManager.getOkHttpClient(config))
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .baseUrl(config.baseUrl)
+            .baseUrl(baseUrl)
             .build()
     }
 }

@@ -1,7 +1,6 @@
 package com.example.mvvm.okhttp.interceptor
 
-import android.text.TextUtils
-import android.util.Log
+import com.example.mvvm.okhttp.utils.LogUtil
 import okhttp3.*
 
 open class DefaultParamsInterceptor : Interceptor {
@@ -15,6 +14,7 @@ open class DefaultParamsInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
+        LogUtil.w("url ----> ${request.url()}")
         val params = getDefaultParams()
         if (!params.isNullOrEmpty()) {
             when (request.method()) {
@@ -41,7 +41,7 @@ open class DefaultParamsInterceptor : Interceptor {
     private fun addGetDefaultParams(request: Request, params: Map<String, String>): Request {
         val builder = request.url().newBuilder()
         params.forEach {
-            builder.addQueryParameter(it.key, it.value)
+            builder.addEncodedQueryParameter(it.key, it.value)
         }
         return request.newBuilder().url(builder.build()).build()
     }

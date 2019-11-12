@@ -44,7 +44,7 @@ class DefaultDisposableObserver<T, R>(private val callback: BaseCallback<R>?) :
             it.onAfter()
             when (e) {
                 is SocketTimeoutException, is ConnectException -> it.onError("网络不给力,请检查您的网络状态")
-                is JsonSyntaxException -> it.onError("数据解析异常")
+                is JsonSyntaxException -> it.onError("数据解析异常  ${e.message}")
                 else -> it.onError("网络错误")
             }
         }

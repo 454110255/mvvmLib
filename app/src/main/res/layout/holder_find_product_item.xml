@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_find_product_item"
+        android:paddingRight="@dimen/qb_px_12">
+
+        <RelativeLayout
+            android:id="@+id/fl_pro_img"
+            android:layout_width="@dimen/qb_px_64"
+            android:layout_height="@dimen/qb_px_64"
+            android:layout_marginLeft="@dimen/qb_px_6"
+            android:layout_marginTop="@dimen/qb_px_6"
+            android:layout_marginRight="@dimen/qb_px_12"
+            android:layout_marginBottom="@dimen/qb_px_6">
+
+            <ImageView
+                android:id="@+id/iv_pro_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qb_px_6"
+            android:layout_marginBottom="@dimen/qb_px_2"
+            android:layout_toRightOf="@id/fl_pro_img"
+            android:ellipsize="end"
+            android:lines="2"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/sp_14"
+            tools:text="出去玩必备这双鞋，这双鞋特别谁666谁到这个长度就知" />
+
+        <TextView
+            android:id="@+id/tv_new_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/fl_pro_img"
+            android:layout_toRightOf="@id/fl_pro_img"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/color_FF5A60"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            tools:text="¥245" />
+
+        <TextView
+            android:id="@+id/tv_sale_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/fl_pro_img"
+            android:layout_marginLeft="@dimen/qb_px_8"
+            android:layout_marginBottom="1.2dp"
+            android:layout_toRightOf="@id/tv_new_price"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/c_999999"
+            android:textSize="@dimen/sp_12"
+            tools:text="¥799" />
+
+        <TextView
+            android:id="@+id/tv_member_tag"
+            style="@style/tv_home_product_member_price"
+            android:layout_marginLeft="@dimen/qb_px_8"
+            android:layout_marginBottom="1.2dp"
+            android:layout_toRightOf="@id/tv_new_price"
+            android:layout_alignBottom="@id/fl_pro_img"
+            android:visibility="gone"
+            tools:text="会员价" />
+    </RelativeLayout>
+</layout>
