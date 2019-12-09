@@ -5,8 +5,6 @@ package com.example.mvvm.okhttp.callback
  */
 abstract class BaseCallback<T> {
 
-    var pageCount:Int? = null
-    var pageNo:Int? = null
     /***
      * 开始网络请求
      */
@@ -25,7 +23,7 @@ abstract class BaseCallback<T> {
     /***
      * 请求响应
      */
-    abstract fun onResponse(response: T?)
+    abstract fun onResponse(response: T?, pageCount:Int? = 0, pageNo:Int? = 0)
 
     abstract fun onError(errorData: String?)
 

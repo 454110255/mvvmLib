@@ -18,11 +18,18 @@
         android:orientation="vertical"
         tools:context=".FindActivity">
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_40"
+            android:onClick="@{viewModel::onClick}"
+            android:text="加载数据" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp" />
+            android:layout_marginRight="12dp"
+            android:layout_weight="1" />
     </LinearLayout>
 </layout>

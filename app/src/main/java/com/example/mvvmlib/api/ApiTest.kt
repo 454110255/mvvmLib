@@ -1,6 +1,7 @@
 package com.example.mvvmlib.api
 
 import com.example.mvvm.okhttp.model.HttpResult
+import com.example.mvvmlib.model.FindBean
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -14,5 +15,5 @@ interface ApiTest {
 
     @FormUrlEncoded
     @POST("discoveryArticle/list")
-    fun getFindList(@Field("pageCount") pageCount:Int, @Field("pageNo") pageNo:Int):Observable<String>
+    fun getFindList(@Field("pageCount") pageCount:Int, @Field("pageNo") pageNo:Int):Observable<FindBean>
 }
